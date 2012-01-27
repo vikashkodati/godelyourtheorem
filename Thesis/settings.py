@@ -20,6 +20,11 @@ DATABASES = {
     }
 }
 
+#EMAIL SMTP
+
+EMAIL_HOST = "localhost"
+EMAIL_PORT = 1025
+
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
 # although not all choices may be available on all operating systems.
@@ -103,6 +108,7 @@ MIDDLEWARE_CLASSES = (
 ROOT_URLCONF = 'Thesis.urls'
 
 TEMPLATE_DIRS = (
+    './templates/',
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
@@ -119,6 +125,7 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     'django.contrib.admindocs',
+    'Thesis.register',
 )
 
 # A sample logging configuration. The only tangible logging
