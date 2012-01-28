@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.db import models
 try:
     import Image
@@ -17,3 +18,18 @@ except ImportError:
 #class Puzzle:
 #    
 #    admin = models.ForeignKey(Member, help_text = 'Administrator of this event')
+
+class Photo(models.Model):
+    image = models.ImageField()
+    uploader = models.ForeignKey(User)
+
+class Puzzle(models.Model):
+    player1 = models.ForeignKey(User)
+    player2 = models.ForeignKey(User)
+    theme_picture = Photo()
+
+class PuzzlePiece(models.Model):
+    helper = models.ForeignKey(User, null=True)
+    puzzle = models.ForeignKey(Puzzle)
+    photo1 = Photo()
+    photo2 = Photo()
