@@ -22,8 +22,13 @@ DATABASES = {
 
 #EMAIL SMTP
 
-EMAIL_HOST = "localhost"
-EMAIL_PORT = 1025
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'puzzlaef@gmail.com'
+EMAIL_HOST_PASSWORD = 'walkaflacka'
+EMAIL_PORT = 587
+
+ACCOUNT_ACTIVATION_DAYS = 1
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
@@ -125,7 +130,8 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     'django.contrib.admindocs',
-    'Thesis.register',
+    'Thesis.main',
+    'registration',
 )
 
 # A sample logging configuration. The only tangible logging

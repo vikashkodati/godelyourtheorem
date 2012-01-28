@@ -1,9 +1,9 @@
 from django.conf.urls.defaults import patterns, include, url
+from django.contrib import admin
+from django.views.generic.simple import direct_to_template
 
 # Uncomment the next two lines to enable the admin:
-from django.contrib import admin
 admin.autodiscover()
-from django.views.generic.simple import direct_to_template
 
 urlpatterns = patterns('',
     # Examples:
@@ -16,5 +16,5 @@ urlpatterns = patterns('',
     # Uncomment the next line to enable the admin:
     url(r'^$',  direct_to_template,  {'template': 'base.html'},  name="index"), 
     url(r'^admin/', include(admin.site.urls)),
-    (r'accounts/',  include('Thesis.register.urls')), 
+    (r'^accounts/', include('registration.backends.default.urls')), 
 )
