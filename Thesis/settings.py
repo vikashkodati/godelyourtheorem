@@ -30,6 +30,13 @@ EMAIL_PORT = 587
 
 ACCOUNT_ACTIVATION_DAYS = 1
 
+RECAPTCHA_PUBKEY = '6Ldl5cwSAAAAAAmF2y17z0ZdL-ZVg_D7q5koym-l'
+RECAPTCHA_PRIVKEY = '6Ldl5cwSAAAAAJ5jx8-pLq3LLiqWkpVIU7VSYBsX'
+
+LOGIN_USER_NOT_ACTIVE_URL = '/accounts/activate/'
+
+AUTH_PROFILE_MODULE = 'main.UserProfile'
+
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
 # although not all choices may be available on all operating systems.
