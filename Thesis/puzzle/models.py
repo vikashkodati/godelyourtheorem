@@ -20,12 +20,12 @@ except ImportError:
 #    admin = models.ForeignKey(Member, help_text = 'Administrator of this event')
 
 class Photo(models.Model):
-    image = models.ImageField()
+    image = models.ImageField(upload_to = "/")
     uploader = models.ForeignKey(User)
 
 class Puzzle(models.Model):
-    player1 = models.ForeignKey(User)
-    player2 = models.ForeignKey(User)
+    player1 = models.ForeignKey(User, related_name = "palyer 1")
+    player2 = models.ForeignKey(User, related_name = "player 2")
     theme_picture = Photo()
 
 class PuzzlePiece(models.Model):
