@@ -1,8 +1,6 @@
 
 function test(){
-	alert('fff');
 	Dajax.process();
-	alert('asf');
 }
 
 function change_page(event){
@@ -19,7 +17,8 @@ function change_page(event){
 }
 
 function send_form(){
-	data = $('my_form').serialize(true);
+	data = $('#my_form').serialize(true);
+	alert(data);
 	Dajaxice.Thesis.main.send_form(test,{'form':data});
 }
 

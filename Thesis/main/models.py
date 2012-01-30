@@ -7,7 +7,7 @@ from django.db.models.signals import post_save
 class UserProfile(models.Model):
     avatar = models.ImageField("avatar", upload_to="avatars/", blank=True, null=True)
     user = models.ForeignKey(User, unique=True)
-    location = models.CharField(max_length=200);
+    location = models.CharField(max_length=200)
 
     def __unicode__(self):
         return unicode(self.user)
