@@ -13,7 +13,7 @@ html, body {
 
 #logo {
 	margin: 10px auto;
-	padding: 0 20px;
+	padding: 0 30px;
 	font-family: "Snippet", Verdana, Arial, Helvetica, sans-serif;
 	font-size: 55px;
 	text-shadow: #AAA 1px 1px 3px;
@@ -68,8 +68,8 @@ html, body {
 #top-nav {
 	margin: auto;
 	width: 900px;
-	height: 100px;
-	padding: 20px 0 20px;
+	height: 75px;
+	padding: 10px 0 30px;
 	text-align: center;
 }
 
@@ -79,7 +79,7 @@ html, body {
 }
 
 .nav-page-element {
-	margin: 20px 20px 0 !important;
+	margin: 20px 25px 0 !important;
 	font-family: "Snippet", Verdana, Arial, Helvetica, sans-serif;
 	font-size: 15px !important;
 	text-shadow: #CCC 1px 1px 2px;
@@ -88,7 +88,7 @@ html, body {
 }
 
 .nav-page-element:active {
-	margin: 22px 20px 0 !important;
+	margin: 22px 25px 0 !important;
 }
 
 .nav-page-element.selected {
