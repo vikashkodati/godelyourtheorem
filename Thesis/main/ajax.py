@@ -54,5 +54,5 @@ def changePage(request, newPage):
 def find_locations(request, location):
     list = User.objects.get(location__iendswith = location)
     dajax = Dajax()
-    dajax.assign('#search-results', 'innerHTML', )
+    dajax.assign('#search-results', 'innerHTML', {})
     return dajax.json()
