@@ -3,7 +3,7 @@
 	
 	{% for page in pages %}
 		{% ifequal current_page page  %}
-			<div class="nav-element nav-page-element button gray">{{ page }}</div>
+			<div class="nav-element nav-page-element button gray selected">{{ page }}</div>
 		{% else %}
 			<div class="nav-element nav-page-element button gray">{{ page }}</div>
 		{% endifequal %}
