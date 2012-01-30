@@ -106,14 +106,22 @@ html, body {
 /******** Play Pages *******/
 
 #search-box-wrapper{
-	margin: 20px auto;
+	margin: 0px auto;
+	padding: 50px 0 90px;
 	width: 520px;
 }
 
 #search-input {
 	float: left;
-	margin: 12px 10px;
-	width: 300px;
+	margin: 12px 10px 12px 30px;
+	width: 350px;
+}
+
+.helper-text {
+	width:100%;
+	text-align: center;
+	padding: 30px;
+	color: #222;
 }
 
 
@@ -142,6 +150,10 @@ html, body {
 	font-size: 1.1em;
 }
 
+.login-buttons-row {
+	margin-left: 15px;
+}
+
 input[type=text],
 input[type=password],
 .form > * > textarea {
@@ -153,8 +165,7 @@ input[type=password],
 	padding: 6px 12px; 
 	font-size: 18px; 
 	font-weight: 300; 
-	line-height: 1.4; 
-	color: #221919; 
+	line-height: 1.4;  
 	background: #fff; 
 	border: 1px solid #a4a2a2; 
 	border-radius: 6px; 
