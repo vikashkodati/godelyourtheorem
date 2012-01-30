@@ -28,6 +28,6 @@ def send_form(request, form):
     return dajax.json()
 
 def changePage(request, newPage):
-    dajax = Dajax()
-  	print newPage
-    return dajax.json()
+	dajax = Dajax()
+	print newPage
+	return dajax.json()
