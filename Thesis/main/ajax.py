@@ -5,10 +5,11 @@ Created on Jan 29, 2012
 '''
 from Thesis.forms import UserProfileForm
 from Thesis.main.models import UserProfile
+from Thesis.views import PAGES, PAGES_LOCATIONS
 from dajax.core import Dajax
 from dajaxice.decorators import dajaxice_register
+from django.contrib.auth.models import User
 from django.core import serializers
-from Thesis.views import PAGES, PAGES_LOCATIONS
 from django.template.loader import render_to_string
 import string
 
@@ -19,8 +20,13 @@ def send_form(request, form):
     form = UserProfileForm(form)
     if form.is_valid():
         user_profile = UserProfile.objects.get(user=request.user.id)
+        user = User.objects.get(id = request.user.id)
+        user.first_name = form.cleaned_data['first_name']
+        user.last_name = form.cleaned_data['last_name']
+        user_profile.avatar = form.cleaned_data['avatar']
         user_profile.location = form.cleaned_data['location']
-        user_profile.save();
+        user.save()
+        user_profile.save()
         dajax.remove_css_class('#my_form input', 'error')
         dajax.alert("This form is_valid(), your name is: %s" % form.cleaned_data.get('first_name'))
     else:
@@ -43,3 +49,10 @@ def changePage(request, newPage):
 	dajax = Dajax()
 	dajax.assign('#page-container', 'innerHTML', render)
 	return dajax.json()
+    
+@dajaxice_register
+def find_locations(request, location):
+    list = User.objects.get(location__iendswith = location)
+    dajax = Dajax()
+    dajax.assign('#search-results', 'innerHTML', )
+    return dajax.json()

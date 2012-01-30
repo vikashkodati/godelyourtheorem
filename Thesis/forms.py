@@ -9,7 +9,7 @@ class UserProfileForm(forms.Form):
     first_name = forms.CharField(required=False, widget=forms.TextInput(), max_length = 30)
     last_name = forms.CharField(required=False, widget=forms.TextInput(), max_length = 30)
     avatar = forms.ImageField(required=False)
-    location = forms.CharField(widget=forms.TextInput(), max_length = 100)
+    location = forms.CharField(required=False, widget=forms.TextInput(), max_length = 100)
     
     def __init__(self, data=None, remoteip=None, *args, **kwargs):
         super(UserProfileForm, self).__init__(data=data, *args, **kwargs)
