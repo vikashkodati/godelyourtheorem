@@ -6,7 +6,7 @@ from django.shortcuts import render_to_response
 def start(request):
 	if request.user.is_authenticated():
 	    # TODO: show profile
-		return render_to_response('pageTemplates/profile.html', {'pages': ['Play', 'Discover', 'Help a Puzzlaefer'], 'current_page': 'Play' })
+		return render_to_response('pageTemplates/profile.html', RequestContext(request, {'pages': ['Play', 'Discover', 'Help a Puzzlaef'], 'current_page': 'Play' }))
 	else:
 	    return HttpResponseRedirect('/accounts/login/')
     
