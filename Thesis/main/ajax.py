@@ -5,12 +5,14 @@ Created on Jan 29, 2012
 '''
 from Thesis.forms import UserProfileForm
 from Thesis.main.models import UserProfile
+from Thesis.main.utils import ResultUser
 from Thesis.views import PAGES, PAGES_LOCATIONS
 from dajax.core import Dajax
 from dajaxice.decorators import dajaxice_register
 from django.contrib.auth.models import User
 from django.core import serializers
 from django.template.loader import render_to_string
+from django.utils import simplejson
 import string
 
 
@@ -52,7 +54,7 @@ def changePage(request, newPage):
     
 @dajaxice_register
 def find_locations(request, location):
-    list = User.objects.get(location__iendswith = location)
+    list = UserProfile.objects.get(location__iendswith = location)
+    result = [ResultUser(x, User.objects.get(id=x.user)) for x in list]
     dajax = Dajax()
-    dajax.assign('#search-results', 'innerHTML', {})
-    return dajax.json()
+    return simplejson.dumps(list)
