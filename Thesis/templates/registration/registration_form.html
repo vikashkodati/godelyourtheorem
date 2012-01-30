@@ -1,16 +1,18 @@
-<html>
-    <head>
-        <title>Register</title>
-    </head>
-    <body>
-        <h2>Register</h2>
-        <form action="/accounts/register/" method="POST">{% csrf_token %}
-            <table>
-            {{ form.as_table }}
-            </table>
-        <p>
-            <input type="submit" value="Submit" />
-        </p>
-        </form>
-    </body>
-</html>
+{% extends 'registration/login.html' %}
+
+{% block title %}
+Registration
+{% endblock %}
+
+{% block form %}
+     <form class="form registrationForm" action="/accounts/register/" method="POST">{% csrf_token %}
+         <table>
+         	{{ form.as_ul }}
+         </table>
+     <p>
+         <input class="button red" type="submit" value="Register" />
+     </p>
+     </form>
+{% endblock %}
+
+
