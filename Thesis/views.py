@@ -1,7 +1,8 @@
-from django.http import HttpResponse
-from django.http import HttpResponseRedirect
-from django.template import RequestContext
+from django.contrib.auth.decorators import login_required
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render_to_response
+from django.template import RequestContext
+from Thesis.forms import UserProfileForm
 
 def start(request):
 	if request.user.is_authenticated():
@@ -9,4 +10,11 @@ def start(request):
 		return render_to_response('pageTemplates/profile.html', {'pages': ['Play', 'Discover', 'Help a Puzzlaefer'], 'current_page': 'Play' })
 	else:
 	    return HttpResponseRedirect('/accounts/login/')
-    
+
+@login_required
+def show_profile(request):
+	context = RequestContext(request)
+#	for key, value in extra_context.items():
+#		context[key] = callable(value) and value() or value
+	form = UserProfileForm(data=request.POST)
+	return render_to_response('pageTemplates/profile.html', {'form': form})

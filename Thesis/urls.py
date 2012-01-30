@@ -1,4 +1,4 @@
-from Thesis.views import start
+from Thesis.views import start, show_profile
 from dajaxice.core import dajaxice_autodiscover
 from django.conf import settings
 from django.conf.urls.defaults import patterns, include, url
@@ -23,7 +23,7 @@ urlpatterns = patterns('',
 
     url(r'^$', start), 
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^accounts/profile', direct_to_template,  {'template': 'pageTemplates/profile.html'},  name="profile"),  
+    url(r'^accounts/profile/$', show_profile),  
     (r'^accounts/', include('registration.backends.default.urls')), 
     (r'^%s/' % settings.DAJAXICE_MEDIA_PREFIX, include('dajaxice.urls')),
 

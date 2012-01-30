@@ -1,5 +1,16 @@
 {% extends 'pageTemplates/page_layout.html' %}
 
+
+<script>
+
+</script>
+
 {% block page-content %}
-	<div class="title red"> Your Stuff </div>
+
+	<div class="title red"> 
+	<form enctype="multipart/form-data" method="post" action="">
+	{{ form.as_p }}
+	<p><input type="button" value="Send" onclick="send_form();"></p>
+	</form>
+ </div>
 {% endblock %}
