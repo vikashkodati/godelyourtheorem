@@ -37,6 +37,8 @@ LOGIN_USER_NOT_ACTIVE_URL = '/accounts/activate/'
 LOGIN_REDIRECT_HOME = '/'
 AUTH_PROFILE_MODULE = 'main.UserProfile'
 
+DAJAXICE_MEDIA_PREFIX="dajaxice"
+
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
 # although not all choices may be available on all operating systems.
@@ -110,7 +112,7 @@ SECRET_KEY = '-$5s55n(5&8o)u%+!a$8z%u+f4pr(o8c&ugqfj-tv@b^u@lo9v'
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
-#     'django.template.loaders.eggs.Loader',
+     'django.template.loaders.eggs.Loader',
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
@@ -120,6 +122,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.static',
     'django.contrib.auth.context_processors.auth',
     'django.contrib.messages.context_processors.messages',
+    'django.core.context_processors.request',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -153,6 +156,7 @@ INSTALLED_APPS = (
     'Thesis.main',
     'Thesis.puzzle',
     'registration',
+    'dajaxice'
 )
 
 # A sample logging configuration. The only tangible logging

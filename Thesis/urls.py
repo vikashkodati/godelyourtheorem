@@ -1,9 +1,12 @@
+from Thesis.views import start
+from dajaxice.core import dajaxice_autodiscover
+from django.conf import settings
 from django.conf.urls.defaults import patterns, include, url
 from django.contrib import admin
-from django.views.generic.simple import direct_to_template
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+from django.views.generic.simple import direct_to_template
 
-from Thesis.views import start
+dajaxice_autodiscover()
 
 # Uncomment the next two lines to enable the admin:
 admin.autodiscover()
@@ -22,6 +25,8 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^accounts/profile', direct_to_template,  {'template': 'home.html'},  name="profile"),  
     (r'^accounts/', include('registration.backends.default.urls')), 
+    (r'^%s/' % settings.DAJAXICE_MEDIA_PREFIX, include('dajaxice.urls')),
+
 )
 
 urlpatterns += staticfiles_urlpatterns()
