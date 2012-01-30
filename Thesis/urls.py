@@ -23,7 +23,7 @@ urlpatterns = patterns('',
 
     url(r'^$', start), 
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^accounts/profile', direct_to_template,  {'template': 'home.html'},  name="profile"),  
+    url(r'^accounts/profile', direct_to_template,  {'template': 'pageTemplates/profile.html'},  name="profile"),  
     (r'^accounts/', include('registration.backends.default.urls')), 
     (r'^%s/' % settings.DAJAXICE_MEDIA_PREFIX, include('dajaxice.urls')),
 
