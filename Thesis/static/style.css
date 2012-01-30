@@ -106,14 +106,23 @@ html, body {
 /******** Play Pages *******/
 
 #search-box-wrapper{
-	margin: 20px auto;
+	margin: 0px auto;
+	padding: 50px 0 90px;
 	width: 520px;
 }
 
 #search-input {
 	float: left;
-	margin: 12px 10px;
-	width: 300px;
+	margin: 12px 10px 12px 30px;
+	width: 350px;
+}
+
+.helper-text {
+	width:100%;
+	text-align: center;
+	padding: 30px;
+	color: #222;
+	text-shadow: #BBB 1px 1px 2px;
 }
 
 
