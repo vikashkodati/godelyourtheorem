@@ -3,7 +3,7 @@ Created on Jan 30, 2012
 
 @author:  Wissam Jarjoui (wjarjoui@mit.edu)
 '''
-from db import models
+from django.db import models
 from django.contrib.auth.models import User
 
 class ResultUser(object):

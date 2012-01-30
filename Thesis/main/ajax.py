@@ -54,7 +54,7 @@ def changePage(request, newPage):
     
 @dajaxice_register
 def find_locations(request, location):
-    list = UserProfile.objects.get(location__iendswith = location)
-    result = [ResultUser(x, User.objects.get(id=x.user)) for x in list]
-    dajax = Dajax()
-    return simplejson.dumps(list)
+	list = UserProfile.objects.filter(location__iendswith = location)
+	print "WOEWOEIRUWEIURWEIRUWOIEUROWEI", list
+	result = [ResultUser(x, User.objects.get(id=x.user)) for x in list]
+	return simplejson.dumps(result)
