@@ -60,12 +60,14 @@ $(document).ready(function() {
 		$(".nav-page-element").click(change_page);
 	}
 	
-	if ($(".registrationForm")) {
-		var inputs = $(".form > li > input");
-		var labels = $(".form > li > label");
+	if ($(".registrationForm #my_form")) {
+		var inputs = $(".form > * > input");
+		var labels = $(".form > * > label");
 		for (i=0; i< inputs.length; i++){
-			$(inputs[i]).attr("placeholder",$(labels[i]).html().replace(":", "..."));
-			$(labels[i]).remove();
+			if (labels[i]){
+				$(inputs[i]).attr("placeholder",$(labels[i]).html().replace(":", "..."));
+				$(labels[i]).remove();
+			}
 		}
 		$(labels[inputs.length]).remove();
 	}
