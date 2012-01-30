@@ -19,3 +19,4 @@ def show_profile(request):
 #		context[key] = callable(value) and value() or value
 	form = UserProfileForm(data=request.POST)
 	return render_to_response('pageTemplates/profile.html', RequestContext(request, {'form': form, 'pages': ['Play', 'Discover', 'Help a Puzzlaef'], 'current_page': 'Play' }))
+

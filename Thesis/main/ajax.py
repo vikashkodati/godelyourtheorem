@@ -22,3 +22,8 @@ def send_form(request, form):
         for error in form.errors:
             dajax.add_css_class('#id_%s' % error,'error')
     return dajax.json()
+
+def changePage(request, newPage):
+    dajax = Dajax()
+  	print newPage
+    return dajax.json()
