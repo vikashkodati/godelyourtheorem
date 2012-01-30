@@ -50,15 +50,15 @@ html, body {
 	padding: 10px;
 	padding-left: 30px;
 	font-size: 1.4em;
-	color: #fff;
+	color: #000;
 	font-family: "Snippet", Verdana, Arial, Helvetica, sans-serif;
 	font-weight: bold;
-	text-shadow: #777 1px 1px 2px;
+	text-shadow: #AAA 1px 1px 2px;
 	border-radius: 5px;
 }
 
 .title.red {
-	background-color: rgba(255,109,109,0.75);
+	background-color: rgba(255,109,109,0.35);
 }
 
 .title.blue {
@@ -103,6 +103,19 @@ html, body {
 	color: #fff !important;
 }
 
+/******** Play Pages *******/
+
+#search-box-wrapper{
+	margin: 20px auto;
+	width: 520px;
+}
+
+#search-input {
+	float: left;
+	margin: 12px 10px;
+	width: 300px;
+}
+
 
 /******** Login/Registration *******/
 
@@ -129,8 +142,8 @@ html, body {
 	font-size: 1.1em;
 }
 
-.form > * > input[type=text],
-.form > * > input[type=password],
+input[type=text],
+input[type=password],
 .form > * > textarea {
 	display: inline-block; 
 	box-sizing: border-box; 
@@ -153,14 +166,14 @@ html, body {
 	-moz-transition: all 0.08s ease-in-out; 
 	-webkit-transition: all 0.08s ease-in-out;
 }
-.form > * > textarea {min-height: 90px;}
+textarea {min-height: 90px;}
 .form > * > div {display: inline-block;}
 .form > * > label {display: inline-block; line-height: 1.4em; font-size: 18px;}
 
 /* Input Focus */
-.form > * > input[type=text]:focus,
-.form > * > input[type=password]:focus,
-.form > * > textarea:focus {
+input[type=text]:focus,
+input[type=password]:focus,
+textarea:focus {
 	border-color: #3ca1ff; 
 	box-shadow: inset 0 1px rgba(34,25,25,0.15), 0 1px rgba(255,255,255,0.8), 0 0 14px rgba(60,161,255,0.35); 
 	-moz-box-shadow: inset 0 1px rgba(34,25,25,0.15), 0 1px rgba(255,255,255,0.8), 0 0 14px rgba(60,161,255,0.35); 
@@ -200,6 +213,7 @@ html, body {
     -moz-transition: background-color 0.2s ease-in-out; 
 	-webkit-transition: background-color 0.2s ease-in-out;
 	cursor: pointer !important;
+	float: left;
 }
 
 .button.red {
