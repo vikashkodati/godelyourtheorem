@@ -82,6 +82,8 @@ function send_form(){
 }
 
 var initiate_play_search = function(){
+	
+	
 	var defaultBounds = new google.maps.LatLngBounds(
 	  new google.maps.LatLng(-33.8902, 151.1759),
 	  new google.maps.LatLng(-33.8474, 151.2631));
@@ -96,39 +98,20 @@ var initiate_play_search = function(){
 	
 	
 	var new_location_set = function() {
-	  /*infowindow.close();
-	  var place = autocomplete.getPlace();
-	  if (place.geometry.viewport) {
-	    map.fitBounds(place.geometry.viewport);
-	  } else {
-	    map.setCenter(place.geometry.location);
-	    map.setZoom(17);  // Why 17? Because it looks good.
-	  }
-
-	  var image = new google.maps.MarkerImage(
-	      place.icon,
-	      new google.maps.Size(71, 71),
-	      new google.maps.Point(0, 0),
-	      new google.maps.Point(17, 34),
-	      new google.maps.Size(35, 35));
-	  marker.setIcon(image);
-	  marker.setPosition(place.geometry.location);
-	*/
-	var place = autocomplete.getPlace();
-	  var address = '';
-	  if (place.address_components) {
-	    address = [(place.address_components[0] &&
-	                place.address_components[0].long_name || ''),
-	               (place.address_components[2] &&
-	                place.address_components[2].long_name || '')
-	              ].join(' ');
-	  }
-
-	 /* infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + address);
-	  infowindow.open(map, marker);*/
-	
 	  var populate_map = function(locations) {
-		alert(locations);
+		$("#current-puzzles-wrapper").hide('medium');
+		
+		$(body).append("<div id='map_canvas'></div>")
+		
+		var mapOptions = {
+		  center: new google.maps.LatLng(-33.8688, 151.2195),
+		  zoom: 13,
+		  mapTypeId: google.maps.MapTypeId.ROADMAP
+		};
+		var map = new google.maps.Map(document.getElementById('map_canvas'),
+		  mapOptions);
+		
+		
 	    var infowindow = new google.maps.InfoWindow();
 
 	    var marker, i;
