@@ -128,7 +128,7 @@ var initiate_play_search = function(){
 	  infowindow.open(map, marker);*/
 	
 	  var populate_map = function(locations) {
-		alert(locations);
+		console.log(locations);
 	    var infowindow = new google.maps.InfoWindow();
 
 	    var marker, i;

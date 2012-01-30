@@ -54,7 +54,6 @@ def changePage(request, newPage):
     
 @dajaxice_register
 def find_locations(request, location):
-	list = UserProfile.objects.filter(location__iendswith = location)
-	print "WOEWOEIRUWEIURWEIRUWOIEUROWEI", list
-	result = [ResultUser(x, User.objects.get(id=x.user)) for x in list]
+	list = UserProfile.objects.filter(location__icontains = location)
+	result = [ResultUser(x).__dict__ for x in list]
 	return simplejson.dumps(result)
