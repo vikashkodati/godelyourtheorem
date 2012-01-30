@@ -1,4 +1,10 @@
+function test(){
+	alert('fff');
+	Dajax.process();
+	alert('asf');
+}
+
 function send_form(){
 	data = $('my_form').serialize(true);
-	Dajaxice.main.send_form(Dajax.process,{'form':data});
+	Dajaxice.Thesis.main.send_form(test,{'form':data});
 }

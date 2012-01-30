@@ -14,6 +14,7 @@ def send_form(request, form):
     form = UserProfileForm(form)
 
     if form.is_valid():
+        
         dajax.remove_css_class('#my_form input','error')
         dajax.alert("This form is_valid(), your name is: %s" % form.cleaned_data.get('first_name'))
     else:
