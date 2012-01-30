@@ -71,11 +71,14 @@ MEDIA_ROOT = '/media/'
 # Examples: "http://media.lawrence.com/media/", "http://example.com/media/"
 MEDIA_URL = ''
 
+import os
+SITE_ROOT = os.path.dirname(os.path.realpath(__file__))
+
 # Absolute path to the directory static files should be collected to.
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/home/media/media.lawrence.com/static/"
-STATIC_ROOT = ''
+STATIC_ROOT = os.path.join(SITE_ROOT, 'staticfiles/')
 
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
@@ -94,7 +97,7 @@ STATICFILES_DIRS = (
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    ("staticglobal", 'C:/Users/bosswissam/git/godelyourtheorem/Thesis/static')
+    ("static", os.path.join(SITE_ROOT, 'static/'))
 )
 
 # List of finder classes that know how to find static files in
