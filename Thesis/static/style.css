@@ -154,6 +154,10 @@ html, body {
 	margin-left: 15px;
 }
 
+.shift-right {
+	margin-left: 70px !important;
+}
+
 input[type=text],
 input[type=password],
 .form > * > textarea {
