@@ -1,1 +1,4 @@
+registration/locale
+registration/views.py
+registration/backends/default/urls.py
 *.pyc
