@@ -15,21 +15,19 @@ import string
 
 @dajaxice_register
 def send_form(request, form):
-	dajax = Dajax()
-	print form
-	form = UserProfileForm(form)
-	print form
-	if form.is_valid():
-		user_profile = UserProfile.objects.get(user_id = request.user.id)
-		user_profile.location = form.cleaned_data['location']
-		user_profile.save();
-		dajax.remove_css_class('#my_form input','error')
-		dajax.alert("This form is_valid(), your name is: %s" % form.cleaned_data.get('first_name'))
-	else:
-		dajax.remove_css_class('#my_form input','error')
+    dajax = Dajax()
+    form = UserProfileForm(form)
+    if form.is_valid():
+        user_profile = UserProfile.objects.get(user=request.user.id)
+        user_profile.location = form.cleaned_data['location']
+        user_profile.save();
+        dajax.remove_css_class('#my_form input', 'error')
+        dajax.alert("This form is_valid(), your name is: %s" % form.cleaned_data.get('first_name'))
+    else:
+		dajax.remove_css_class('#my_form input', 'error')
 		for error in form.errors:
-			dajax.add_css_class('#id_%s' % error,'error')
-	return dajax.json()
+			dajax.add_css_class('#id_%s' % error, 'error')
+    return dajax.json()
 
 @dajaxice_register
 def changePage(request, newPage):
@@ -39,9 +37,9 @@ def changePage(request, newPage):
 		template = PAGES_LOCATIONS[1]
 	elif (newPage == PAGES[2]):
 		template = PAGES_LOCATIONS[2]
-	print "um"+template
+	print "um" + template
 	render = render_to_string(template, {})
 	print render
 	dajax = Dajax()
-	dajax.assign('#page-container','innerHTML',render)
+	dajax.assign('#page-container', 'innerHTML', render)
 	return dajax.json()
