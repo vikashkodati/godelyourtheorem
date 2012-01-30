@@ -15,12 +15,10 @@
 	{% block form %}
 	 <form class="form" action="{{ app_path }}" method="post">{% csrf_token %}
 	     <div class="form-row">
-	         <label for="id_username">Username</label>
-	         <input type="text" name="username" id="id_username" />
+	         <input type="text" name="username" id="id_username" placeholder="Username..." />
 	     </div>
 	     <div class="form-row">
-	         <label for="id_password">Password</label>
-	         <input type="password" name="password" id="id_password" />
+	         <input type="password" name="password" id="id_password" placeholder="Password..."/>
 	         <input type="hidden" name="this_is_the_login_form" value="1" />
 	     </div>
 	     <div class="login-buttons-row">
@@ -29,10 +27,6 @@
 	     </div>
 	 </form>
 	{% endblock %}
-
- <script type="text/javascript">
- document.getElementById('id_username').focus()
- </script>
  </div>
 
 {% endblock %}

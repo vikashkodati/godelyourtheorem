@@ -122,7 +122,6 @@ html, body {
 	text-align: center;
 	padding: 30px;
 	color: #222;
-	text-shadow: #BBB 1px 1px 2px;
 }
 
 
@@ -151,6 +150,10 @@ html, body {
 	font-size: 1.1em;
 }
 
+.login-buttons-row {
+	margin-left: 15px;
+}
+
 input[type=text],
 input[type=password],
 .form > * > textarea {
@@ -162,8 +165,7 @@ input[type=password],
 	padding: 6px 12px; 
 	font-size: 18px; 
 	font-weight: 300; 
-	line-height: 1.4; 
-	color: #221919; 
+	line-height: 1.4;  
 	background: #fff; 
 	border: 1px solid #a4a2a2; 
 	border-radius: 6px; 
