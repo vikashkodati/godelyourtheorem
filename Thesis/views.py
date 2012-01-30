@@ -7,7 +7,8 @@ from Thesis.forms import UserProfileForm
 def start(request):
 	if request.user.is_authenticated():
 	    # TODO: show profile
-		return render_to_response('pageTemplates/profile.html', RequestContext(request, {'pages': ['Play', 'Discover', 'Help a Puzzlaef'], 'current_page': 'Play' }))
+		form = UserProfileForm(data=request.POST)
+		return render_to_response('pageTemplates/profile.html', RequestContext(request, {'form': form, 'pages': ['Play', 'Discover', 'Help a Puzzlaef'], 'current_page': 'Play' }))
 	else:
 	    return HttpResponseRedirect('/accounts/login/')
 
@@ -17,4 +18,4 @@ def show_profile(request):
 #	for key, value in extra_context.items():
 #		context[key] = callable(value) and value() or value
 	form = UserProfileForm(data=request.POST)
-	return render_to_response('pageTemplates/profile.html', {'form': form})
+	return render_to_response('pageTemplates/profile.html', RequestContext(request, {'form': form, 'pages': ['Play', 'Discover', 'Help a Puzzlaef'], 'current_page': 'Play' }))
