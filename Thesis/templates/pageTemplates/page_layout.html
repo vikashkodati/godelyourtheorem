@@ -1,7 +1,9 @@
 {% extends 'base.html' %}
 
 {% block content %}
-	{% include top_nav %}
+	{% include 'pageTemplates/top_nav.html' %}
 	<div id="page-container">
+		{% block page-content %}
+		{% endblock %}
 	</div>
 {% endblock %}

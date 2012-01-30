@@ -11,6 +11,15 @@ html, body {
 	color: #3ca1ff;
 }
 
+#logo {
+	margin: 10px auto;
+	width: 5em;
+	font-family: "Snippet", Verdana, Arial, Helvetica, sans-serif;
+	font-size: 5em;
+	text-shadow: #AAA 1px 1px 3px;
+	text-align: center;
+}
+
 #logo-big {
 	margin: 10px auto;
 	width: 5em;
@@ -20,9 +29,59 @@ html, body {
 	text-align: center;
 }
 
+/******** Page Level Sytles *******/
+
+#page-container {
+	width: 900px;
+	box-shadow: 4px 4px 7px #AAA; 
+	-moz-box-shadow: 4px 4px 7px #AAA; 
+	-webkit-box-shadow: 4px 4px 7px #AAA;
+}
+
+.title {
+	margin-left: -20px;
+	width: 940px;
+}
+
+.title.red {
+	background-color: rgba(255,109,109,0.35);
+}
+
+.title.blue {
+	background-color: rgba(60,161,255,0.35);
+}
+
+/******** Navigation ********/
+
+#top-nav {
+	width: 900px;
+	padding: 1em 0 2em;
+	text-align: left;
+}
+
+.nav-element {
+	float: left;
+	text-decoration: none;
+}
+
+.nav-page-element {
+	margin: 10px auto;
+	width: 3em;
+	font-family: "Snippet", Verdana, Arial, Helvetica, sans-serif;
+	font-size: 3em;
+	text-shadow: #AAA 1px 1px 3px;
+	text-align: center;
+}
+
+.nav-element.selected {
+	text-decoration: underline;
+}
+
+
+/******** Login/Registration *******/
+
 #login-content {
 	margin: 50px auto 0;
-	
 }
 
 .form {
@@ -36,7 +95,7 @@ html, body {
 }
 
 .form > * > label {
-	width: 155px;
+	width: 170px;
 	display: block;
 	float: left;
 	color: #666;
