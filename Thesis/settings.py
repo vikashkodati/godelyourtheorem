@@ -34,7 +34,7 @@ RECAPTCHA_PUBKEY = '6Ldl5cwSAAAAAAmF2y17z0ZdL-ZVg_D7q5koym-l'
 RECAPTCHA_PRIVKEY = '6Ldl5cwSAAAAAJ5jx8-pLq3LLiqWkpVIU7VSYBsX'
 
 LOGIN_USER_NOT_ACTIVE_URL = '/accounts/activate/'
-
+LOGIN_REDIRECT_HOME = '/'
 AUTH_PROFILE_MODULE = 'main.UserProfile'
 
 # Local time zone for this installation. Choices can be found here:
@@ -62,7 +62,7 @@ USE_L10N = True
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/home/media/media.lawrence.com/media/"
-MEDIA_ROOT = ''
+MEDIA_ROOT = '/media/'
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
