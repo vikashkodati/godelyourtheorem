@@ -1,0 +1,232 @@
+html, body {
+	font-family: "Lucida Grande", Verdana, Arial, Helvetica, sans-serif !important;
+	background-color: #EEE;
+}
+
+.red-text {
+	color: #ff6d6d;
+}
+
+.blue-text {
+	color: #3ca1ff;
+}
+
+#logo {
+	margin: 10px auto;
+	padding: 0 30px;
+	font-family: "Snippet", Verdana, Arial, Helvetica, sans-serif;
+	font-size: 55px;
+	text-shadow: #AAA 1px 1px 3px;
+	text-align: center;
+}
+
+#logo-big {
+	margin: 10px auto;
+	font-family: "Snippet", Verdana, Arial, Helvetica, sans-serif;
+	font-size: 80px;
+	text-shadow: #AAA 1px 1px 3px;
+	text-align: center;
+}
+
+/******** Page Level Sytles *******/
+
+#page-container {
+	margin: auto;
+	width: 900px;
+	box-shadow: 2px 2px 7px #AAA; 
+	-moz-box-shadow: 2px 2px 7px #AAA; 
+	-webkit-box-shadow: 2px 2px 7px #AAA; 
+	min-height: 200px;
+	background-color: #FFF;
+}
+
+.title {
+	margin-top: 20px;
+	margin-left: -20px;
+	width: 900px;
+	display: inline-block;
+	padding: 10px;
+	padding-left: 30px;
+	font-size: 1.4em;
+	color: #fff;
+	font-family: "Snippet", Verdana, Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	text-shadow: #777 1px 1px 2px;
+	border-radius: 5px;
+}
+
+.title.red {
+	background-color: rgba(255,109,109,0.75);
+}
+
+.title.blue {
+	background-color: rgba(60,161,255,0.35);
+}
+
+/******** Navigation ********/
+
+#top-nav {
+	margin: auto;
+	width: 900px;
+	height: 75px;
+	padding: 10px 0 30px;
+	text-align: center;
+}
+
+.nav-element {
+	float: left;
+	text-decoration: none;
+}
+
+.nav-page-element {
+	margin: 20px 25px 0 !important;
+	font-family: "Snippet", Verdana, Arial, Helvetica, sans-serif;
+	font-size: 15px !important;
+	text-shadow: #CCC 1px 1px 2px;
+	text-align: center;
+	font-weight: bold;
+}
+
+.nav-page-element:active {
+	margin: 22px 25px 0 !important;
+}
+
+.nav-page-element.selected {
+	border-bottom: 2px solid #3ca1ff;
+}
+
+
+/******** Login/Registration *******/
+
+#login-content {
+	margin: 50px auto 0;
+}
+
+.form {
+	margin: auto;
+	width: 240px;
+}
+
+.form > * {
+	margin: 15px 0;
+	display: block;
+}
+
+.form > * > label {
+	width: 170px;
+	display: block;
+	float: left;
+	color: #666;
+	font-size: 1.1em;
+}
+
+.form > * > input[type=text],
+.form > * > input[type=password],
+.form > * > textarea {
+	display: inline-block; 
+	box-sizing: border-box; 
+	-moz-box-sizing: border-box; 
+	-ms-box-sizing: border-box; 
+	-webkit-box-sizing: border-box; 
+	padding: 6px 12px; 
+	font-size: 18px; 
+	font-weight: 300; 
+	line-height: 1.4; 
+	color: #221919; 
+	background: #fff; 
+	border: 1px solid #a4a2a2; 
+	border-radius: 6px; 
+	-moz-border-radius: 6px; 
+	-webkit-border-radius: 6px; 
+	box-shadow: inset 0 1px rgba(34,25,25,0.15), 0 1px rgba(255,255,255,0.8); 
+	-moz-box-shadow: inset 0 1px rgba(34,25,25,0.15), 0 1px rgba(255,255,255,0.8); 
+	-webkit-box-shadow: inset 0 1px rgba(34,25,25,0.15), 0 1px rgba(255,255,255,0.8); 
+	-moz-transition: all 0.08s ease-in-out; 
+	-webkit-transition: all 0.08s ease-in-out;
+}
+.form > * > textarea {min-height: 90px;}
+.form > * > div {display: inline-block;}
+.form > * > label {display: inline-block; line-height: 1.4em; font-size: 18px;}
+
+/* Input Focus */
+.form > * > input[type=text]:focus,
+.form > * > input[type=password]:focus,
+.form > * > textarea:focus {
+	border-color: #3ca1ff; 
+	box-shadow: inset 0 1px rgba(34,25,25,0.15), 0 1px rgba(255,255,255,0.8), 0 0 14px rgba(60,161,255,0.35); 
+	-moz-box-shadow: inset 0 1px rgba(34,25,25,0.15), 0 1px rgba(255,255,255,0.8), 0 0 14px rgba(60,161,255,0.35); 
+	-webkit-box-shadow: inset 0 1px rgba(34,25,25,0.15), 0 1px rgba(255,255,255,0.8), 0 0 14px rgba(60,161,255,0.35); 
+}
+
+.registrationForm > * > textarea:focus {
+	border-color: #ff6d6d; 
+	box-shadow: inset 0 1px rgba(34,25,25,0.15), 0 1px rgba(255,255,255,0.8), 0 0 14px rgba(255,109,109,0.35); 
+	-moz-box-shadow: inset 0 1px rgba(34,25,25,0.15), 0 1px rgba(255,255,255,0.8), 0 0 14px rgba(255,109,109,0.35); 
+	-webkit-box-shadow: inset 0 1px rgba(34,25,25,0.15), 0 1px rgba(255,255,255,0.8), 0 0 14px rgba(255,109,109,0.35); 
+}
+
+
+
+.button {
+	margin: 10px;
+    border: 1px solid rgba(0, 0, 0, .2);
+    border-radius: 5px;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, .4) inset, 0 -3px 0 rgba(0, 0, 0, .3) inset, 0 0 10px rgba(255, 255, 255, .3) inset, 0 2px 4px rgba(0, 0, 0, .2);
+    -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, .4) inset, 0 -3px 0 rgba(0, 0, 0, .3) inset, 0 0 10px rgba(255, 255, 255, .3) inset, 0 2px 4px rgba(0, 0, 0, .2);
+    -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, .4) inset, 0 -3px 0 rgba(0, 0, 0, .3) inset, 0 0 10px rgba(255, 255, 255, .3) inset, 0 2px 4px rgba(0, 0, 0, .2);
+    color: #fff;
+    display: block;    
+    font-size: 12px;
+    font-weight: bold;
+    text-align: center;
+    text-shadow: 0 -1px rgba(0, 0, 0, .2);
+	text-decoration: none;
+    padding: 11px 15px 14px;
+    -moz-transition: background-color 0.2s ease-in-out; 
+	-webkit-transition: background-color 0.2s ease-in-out;
+	float: left;
+	cursor: pointer !important;
+}
+
+.button.red {
+	background-color: #ff6d6d;
+}
+
+.button.blue {
+	background-color: #3ca1ff;
+}
+
+.button.gray {
+	color: #3ca1ff;
+}
+
+.button.blue-gray {
+	background-color: #fff;
+	color: #3ca1ff;
+}
+
+.button:hover {
+    background-color: #3cb1ff;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, .4) inset, 0 -3px 0 rgba(0, 0, 0, .3) inset, 0 0 10px rgba(255, 255, 255, .4) inset, 0 2px 4px rgba(0, 0, 0, .3);
+    -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, .4) inset, 0 -3px 0 rgba(0, 0, 0, .3) inset, 0 0 10px rgba(255, 255, 255, .4) inset, 0 2px 4px rgba(0, 0, 0, .3);
+    -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, .4) inset, 0 -3px 0 rgba(0, 0, 0, .3) inset, 0 0 10px rgba(255, 255, 255, .4) inset, 0 2px 4px rgba(0, 0, 0, .3);
+	color: #fff;
+}
+
+.button.red:hover {
+    background-color: #ff7e7e;
+}
+
+.button:active {
+    background-color: #368fe1;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, .2) inset, 0 -1px 0 rgba(0, 0, 0, .3) inset, 0 0 10px rgba(255, 255, 255, .2) inset, 0 2px 4px rgba(0, 0, 0, .2);
+    -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, .2) inset, 0 -1px 0 rgba(0, 0, 0, .3) inset, 0 0 10px rgba(255, 255, 255, .2) inset, 0 2px 4px rgba(0, 0, 0, .2);
+    -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, .2) inset, 0 -1px 0 rgba(0, 0, 0, .3) inset, 0 0 10px rgba(255, 255, 255, .2) inset, 0 2px 4px rgba(0, 0, 0, .2);
+    padding: 11px 15px 12px;
+    margin-top: 12px;
+	color: #fff;
+}
+
+.button.red:active {
+    background-color: #d95959;
+}
