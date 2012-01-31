@@ -35,22 +35,11 @@ function initialize(id) {
 	    map.setZoom(17);  // Why 17? Because it looks good.
 	  }
 
-	  var image = new google.maps.MarkerImage(
-	      place.icon,
-	      new google.maps.Size(71, 71),
-	      new google.maps.Point(0, 0),
-	      new google.maps.Point(17, 34),
-	      new google.maps.Size(35, 35));
-	  marker.setIcon(image);
 	  marker.setPosition(place.geometry.location);
 	  
 	  var address = '';
-	  if (place.address_components) {
-	    address = [(place.address_components[0] &&
-	                place.address_components[0].short_name || ''),
-	               (place.address_components[2] &&
-	                place.address_components[2].short_name || '')
-	              ].join(' ');
+	  if (place.formatted_address) {
+	    address = place.formatted_address;
 	  }
 
 	  infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + address);
@@ -78,7 +67,7 @@ $.fn.serializeObject = function()
 
 function send_form(){
 	data = $('#my_form').serializeObject();
-	Dajaxice.Thesis.main.send_form(test,{'form':data});
+	Dajaxice.Thesis.main.send_form(Dajax.process,{'form':data});
 }
 
 var initiate_play_search = function(){
@@ -100,34 +89,55 @@ var initiate_play_search = function(){
 	var new_location_set = function() {
 	  var populate_map = function(locations) {
 		$("#current-puzzles-wrapper").hide('medium');
-		
-		$(body).append("<div id='map_canvas'></div>")
+		console.log(locations);
+		if ($('#play_map_canvas').length == 0){
+			$('#page-container').append("<div id='play_map_canvas'></div>");
+		}
 		
 		var mapOptions = {
 		  center: new google.maps.LatLng(-33.8688, 151.2195),
 		  zoom: 13,
 		  mapTypeId: google.maps.MapTypeId.ROADMAP
 		};
-		var map = new google.maps.Map(document.getElementById('map_canvas'),
+		var map = new google.maps.Map(document.getElementById('play_map_canvas'),
 		  mapOptions);
 		
+		geocoder = new google.maps.Geocoder();
+		if (locations.length == 0){}
+			geocoder.geocode( { 'address': $('#search-input').val() }, function(results, status) {
+		        if (status == google.maps.GeocoderStatus.OK) {
+		          map.setCenter(results[0].geometry.location);
+		        } else {
+		          alert("Geocode was not successful for the following reason: " + status);
+		        }
+		});
 		
-	    var infowindow = new google.maps.InfoWindow();
-
-	    var marker, i;
-
 	    for (i = 0; i < locations.length; i++) {  
-	      marker = new google.maps.Marker({
-	        position: new google.maps.LatLng(locations[i][1], locations[i][2]),
-	        map: map
-	      });
-
-	      google.maps.event.addListener(marker, 'click', (function(marker, i) {
-	        return function() {
-	          infowindow.setContent(locations[i][0]);
-	          infowindow.open(map, marker);
-	        }
-	      })(marker, i));
+			var infoWindowContent = '<div style="text-align:center"><strong>' + locations[i].username + '</strong><br>' + locations[i].location + '<div class="button blue" style="float:none">Start Puzzlaef</div></div>';
+			
+			var process_geocode = function(infoWindowContent) {
+				return function(results, status){
+			      if (status == google.maps.GeocoderStatus.OK) {
+			        map.setCenter(results[0].geometry.location);
+			        var marker = new google.maps.Marker({
+			            map: map,
+			            position: results[0].geometry.location
+			        });
+					var listener = (function(marker) {
+				        	return function() {
+								var infowindow = new google.maps.InfoWindow();
+					          	infowindow.setContent(infoWindowContent);
+					          	infowindow.open(map, marker);
+				        }
+				      })(marker);
+					google.maps.event.addListener(marker, 'click', listener);
+			      } else {
+			        alert("Geocode was not successful for the following reason: " + status);
+			      }
+				}	
+			 };
+			
+			geocoder.geocode( { 'address': locations[i].location}, process_geocode(infoWindowContent));
 	    }
 	};
 	
@@ -148,6 +158,8 @@ function change_page(event){
 			Dajax.process(data);
 			if (pageClicked == "Play"){
 				initiate_play_search();
+			} else if (pageClicked == "Settings") {
+				initialize('id_location');
 			}
 		},{'newPage':pageClicked});
 	}

@@ -6,10 +6,11 @@ Created on Jan 29, 2012
 from Thesis.forms import UserProfileForm
 from Thesis.main.models import UserProfile
 from Thesis.main.utils import ResultUser
-from Thesis.views import PAGES, PAGES_LOCATIONS
+from Thesis.views import PAGES_FULL, PAGES_LOCATIONS, get_profile_form
 from dajax.core import Dajax
 from dajaxice.decorators import dajaxice_register
 from django.contrib.auth.models import User
+from django.contrib.auth import logout
 from django.core import serializers
 from django.template.loader import render_to_string
 from django.utils import simplejson
@@ -39,22 +40,29 @@ def send_form(request, form):
 
 @dajaxice_register
 def changePage(request, newPage):
-	if (newPage == PAGES[0]):
-		template = PAGES_LOCATIONS[0]
-	elif (newPage == PAGES[1]):
-		template = PAGES_LOCATIONS[1]
-	elif (newPage == PAGES[2]):
-		template = PAGES_LOCATIONS[2]
-	print "um" + template
-	render = render_to_string(template, {})
-	print render
 	dajax = Dajax()
+	if (newPage == PAGES_FULL[0]):
+		template = PAGES_LOCATIONS[0]
+	elif (newPage == PAGES_FULL[1]):
+		template = PAGES_LOCATIONS[1]
+	elif (newPage == PAGES_FULL[2]):
+		template = PAGES_LOCATIONS[2]
+	elif (newPage == PAGES_FULL[3]):
+		template = PAGES_LOCATIONS[3]
+		render = render_to_string(template, {'form': get_profile_form(request)})
+		dajax = Dajax()
+		dajax.assign('#page-container', 'innerHTML', render)
+		return dajax.json()
+	elif (newPage == PAGES_FULL[4]):
+		logout(request)
+		dajax.redirect("/accounts/login",delay=0) 
+		return dajax.json()
+	render = render_to_string(template, {})
 	dajax.assign('#page-container', 'innerHTML', render)
 	return dajax.json()
     
 @dajaxice_register
 def find_locations(request, location):
-	list = UserProfile.objects.filter(location__iendswith = location)
-	print "WOEWOEIRUWEIURWEIRUWOIEUROWEI", list
-	result = [ResultUser(x, User.objects.get(id=x.user)) for x in list]
+	list = UserProfile.objects.filter(location__icontains = location)
+	result = [ResultUser(x).__dict__ for x in list]
 	return simplejson.dumps(result)

@@ -3,7 +3,6 @@
 {% block content %}
 	{% include 'pageTemplates/top_nav.html' %}
 	<div id="page-container">
-		{% block page-content %}
-		{% endblock %}
+		{% include current_page_template %}
 	</div>
 {% endblock %}
