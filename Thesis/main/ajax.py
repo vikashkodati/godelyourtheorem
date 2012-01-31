@@ -10,12 +10,20 @@ from Thesis.views import PAGES_FULL, PAGES_LOCATIONS, get_profile_form
 from dajax.core import Dajax
 from dajaxice.decorators import dajaxice_register
 from django.contrib.auth.models import User
+from django.contrib.auth.decorators import user_passes_test
 from django.contrib.auth import logout
 from django.core import serializers
 from django.template.loader import render_to_string
 from django.utils import simplejson
 import string
 
+def assert_access(user):
+	if user.is_authenticated():
+		return None
+	else:
+		dajax = Dajax()
+	 	dajax.redirect("/accounts/login",delay=0) 
+		return dajax.json()
 
 @dajaxice_register
 def send_form(request, form):
@@ -31,7 +39,6 @@ def send_form(request, form):
         user.save()
         user_profile.save()
         dajax.remove_css_class('#my_form input', 'error')
-        dajax.alert("This form is_valid(), your name is: %s" % form.cleaned_data.get('first_name'))
     else:
 		dajax.remove_css_class('#my_form input', 'error')
 		for error in form.errors:
@@ -40,6 +47,10 @@ def send_form(request, form):
 
 @dajaxice_register
 def changePage(request, newPage):
+	assertAccess = assert_access(request.user)
+	if(assertAccess):
+		return assertAccess
+	
 	dajax = Dajax()
 	if (newPage == PAGES_FULL[0]):
 		template = PAGES_LOCATIONS[0]

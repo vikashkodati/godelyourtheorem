@@ -174,9 +174,9 @@ $(document).ready(function() {
 		var inputs = $(".form > * > input");
 		var labels = $(".form > * > label");
 		for (i=0; i< inputs.length; i++){
-			if (labels[i]){
-				$(inputs[i]).attr("placeholder",$(labels[i]).html().replace(":", "..."));
-				$(labels[i]).remove();
+			if (labels[i-1]){
+				$(inputs[i]).attr("placeholder",$(labels[i-1]).html().replace(":", "..."));
+				$(labels[i-1]).remove();
 			}
 		}
 		$(labels[inputs.length]).remove();
@@ -185,5 +185,9 @@ $(document).ready(function() {
 	
 	if (document.getElementById('id_location')){
 		 initialize('id_location');
+	}
+	
+	if (document.getElementById('search-input')){
+		 initiate_play_search();
 	}
 });
