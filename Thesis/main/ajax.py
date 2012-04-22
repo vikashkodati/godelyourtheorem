@@ -6,6 +6,8 @@ Created on Jan 29, 2012
 from Thesis.forms import UserProfileForm
 from Thesis.main.models import UserProfile
 from Thesis.main.utils import ResultUser
+from Thesis.main.pictureGrid import PictureGrid
+from Thesis.main.pictureThumb import PictureThumb
 from Thesis.views import PAGES_FULL, PAGES_LOCATIONS, get_profile_form
 from dajax.core import Dajax
 from dajaxice.decorators import dajaxice_register
@@ -24,6 +26,16 @@ def assert_access(user):
 		dajax = Dajax()
 	 	dajax.redirect("/accounts/login",delay=0) 
 		return dajax.json()
+
+
+def make_new_puzzle():
+	#TODO: Wissam
+	return "walka"
+	
+def getThemes():
+	#TODO: Wissam
+	return []
+
 
 @dajaxice_register
 def send_form(request, form):
@@ -71,9 +83,45 @@ def changePage(request, newPage):
 	render = render_to_string(template, {})
 	dajax.assign('#page-container', 'innerHTML', render)
 	return dajax.json()
-    
+
+fakePictureURL = "http://www.blogcdn.com/www.engadget.com/media/2012/01/2012-01-29-sony200_216x150.jpg"
+fakePictureTitle = "Great Sunset"
+fakePictureSet = [PictureThumb(fakePictureURL,fakePictureURL,fakePictureTitle) for i in range(15)]
+
+@dajaxice_register
+def start_puzzle(request, startWith):
+	assertAccess = assert_access(request.user)
+	if(assertAccess):
+		return assertAccess
+	
+	puzzle_id = make_new_puzzle()
+	
+	pictureGrid = PictureGrid(fakePictureSet).getGridAsString();
+	
+	render = render_to_string("puzzle/pickTheme.html", {"startWith":startWith, 'themes': getThemes(), 'pictureGrid': pictureGrid})
+	dajax = Dajax()
+	dajax.assign('#page-container', 'innerHTML', render)
+	dajax.script("initialize_pick_theme('"+ puzzle_id +"')")
+	return dajax.json()  
+
+
+@dajaxice_register
+def theme_picked(request, theme):
+	assertAccess = assert_access(request.user)
+	if(assertAccess):
+		return assertAccess
+
+	#render = render_to_string("puzzle/pickTheme.html", {"startWith":startWith, 'themes': getThemes(), 'pictureGrid': pictureGrid})
+	dajax = Dajax()
+	#dajax.assign('#page-container', 'innerHTML', render)
+	#dajax.script("initialize_pick_theme('"+ puzzle_id +"')")
+	return dajax.json()
+
 @dajaxice_register
 def find_locations(request, location):
 	list = UserProfile.objects.filter(location__icontains = location)
 	result = [ResultUser(x).__dict__ for x in list]
 	return simplejson.dumps(result)
+
+
+
